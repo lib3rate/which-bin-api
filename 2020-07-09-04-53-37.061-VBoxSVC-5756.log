@@ -1,0 +1,7 @@
+Log created: 2020-07-09T04:53:37.615047000Z
+Process ID:  5756 (0x167c)
+Parent PID:  1700 (0x6a4)
+Executable:  /usr/lib/virtualbox/VBoxSVC
+Arg[0]: /usr/lib/virtualbox/VBoxSVC
+Arg[1]: --auto-shutdown
+AddRef: illegal refcnt=3221225469 state=2

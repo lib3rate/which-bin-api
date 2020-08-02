@@ -10,9 +10,10 @@ const app = express();
 
 const db = require("./db");
 
-const days = require("./routes/days");
-const appointments = require("./routes/appointments");
-const interviewers = require("./routes/interviewers");
+const users = require("./routes/users");
+// const organics = require("./routes/organics");
+// const recycling = require("./routes/recycling");
+// const garbage = require("./routes/garbage");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -30,18 +31,19 @@ function read(file) {
 }
 
 module.exports = function application(
-  ENV,
-  actions = { updateAppointment: () => {} }
+  ENV
+  // actions = { updateAppointment: () => {} }
 ) {
   app.use(cors());
   app.use(helmet());
   app.use(bodyparser.json());
 
-  app.use("/api", days(db));
-  app.use("/api", appointments(db, actions.updateAppointment));
-  app.use("/api", interviewers(db));
+  app.use("/api", users(db));
+  // app.use("/api", organics(db));
+  // app.use("/api", recycling(db));
+  // app.use("/api", garbage(db));
 
-  if (ENV === "development" || ENV === "test") {
+  if (ENV === "development") {
     Promise.all([
       read(path.resolve(__dirname, `db/schema/create.sql`)),
       read(path.resolve(__dirname, `db/schema/${ENV}.sql`))
