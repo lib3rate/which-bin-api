@@ -1,20 +1,19 @@
 const router = require("express").Router();
 
 module.exports = (db) => {
-  router.get("/users", (request, response) => {
+  router.get("/bins", (request, response) => {
     db.query(
       `
-      SELECT * FROM users;
+      SELECT * FROM bins;
     `
-    ).then(({ rows: users }) => {
+    ).then(({ rows: bins }) => {
       response.json(
-        users.reduce(
+        bins.reduce(
           (previous, current) => ({ ...previous, [current.id]: current }),
           {}
         )
       );
     });
   });
-
   return router;
 };

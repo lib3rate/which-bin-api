@@ -11,9 +11,8 @@ const app = express();
 const db = require("./db");
 
 const users = require("./routes/users");
-// const organics = require("./routes/organics");
-// const recycling = require("./routes/recycling");
-// const garbage = require("./routes/garbage");
+const bins = require("./routes/bins");
+const user_bins = require("./routes/user_bins");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -39,10 +38,9 @@ module.exports = function application(
   app.use(bodyparser.json());
 
   app.use("/api", users(db));
-  // app.use("/api", organics(db));
-  // app.use("/api", recycling(db));
-  // app.use("/api", garbage(db));
-
+  app.use("/api", bins(db));
+  app.use("/api", user_bins(db));
+ 
   if (ENV === "development") {
     Promise.all([
       read(path.resolve(__dirname, `db/schema/create.sql`)),
