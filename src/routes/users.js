@@ -4,15 +4,14 @@ module.exports = (db) => {
   router.get("/users", (request, response) => {
     db.query(
       `
-      SELECT * FROM users;
+      SELECT users.username, sum(user_bins.score) as score
+      FROM user_bins
+      JOIN users ON user_id = users.id
+      WHERE users.id = 3
+      GROUP BY users.username;
     `
-    ).then(({ rows: users }) => {
-      response.json(
-        users.reduce(
-          (previous, current) => ({ ...previous, [current.id]: current }),
-          {}
-        )
-      );
+    ).then(({ rows: user }) => {
+      response.json(user);
     });
   });
 
