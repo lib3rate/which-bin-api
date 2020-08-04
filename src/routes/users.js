@@ -11,14 +11,7 @@ module.exports = (db) => {
       GROUP BY users.username;
     `
     ).then(({ rows: user }) => {
-      console.log(user);
       response.json(user);
-      // response.json(
-      //   users.reduce(
-      //     (previous, current) => ({ ...previous, [current.id]: current }),
-      //     {}
-      //   )
-      // );
     });
   });
 
