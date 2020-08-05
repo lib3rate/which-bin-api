@@ -17,9 +17,6 @@ VALUES
   ('recycling'),
   ('garbage');
 
--- SELECT sum(score) FROM user_bins
--- WHERE user_id = 2;
-
 INSERT INTO user_bins (user_id, bin_id, score)
 VALUES
   (1, 1, 25),
