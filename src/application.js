@@ -41,7 +41,7 @@ module.exports = function application(
   app.use("/api", bins(db));
   app.use("/api", user_bins(db));
  
-  if (ENV === "development") {
+  if (ENV === "development" || ENV === "test") {
     Promise.all([
       read(path.resolve(__dirname, `db/schema/create.sql`)),
       read(path.resolve(__dirname, `db/schema/${ENV}.sql`))
