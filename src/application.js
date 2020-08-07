@@ -13,7 +13,6 @@ const db = require("./db");
 const users = require("./routes/users");
 const bins = require("./routes/bins");
 const user_bins = require("./routes/user_bins");
-const user_info = require("./routes/user_info");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -41,7 +40,6 @@ module.exports = function application(
   app.use("/api", users(db));
   app.use("/api", bins(db));
   app.use("/api", user_bins(db, actions.insertItem));
-  app.use("/api", user_info(db));
  
   if (ENV === "development" || ENV === "test") {
     Promise.all([

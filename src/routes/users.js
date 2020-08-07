@@ -12,7 +12,6 @@ module.exports = (db) => {
       GROUP BY user_id, bins.name;
     `
     ).then(({ rows: user }) => {
-      console.log(user);
       response.json(user);
     });
   });

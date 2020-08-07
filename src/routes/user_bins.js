@@ -21,9 +21,7 @@ module.exports = (db, insertItem) => {
     //   setTimeout(() => response.status(500).json({}), 1000);
     //   return;
     // }
-
     const { userId, binId, score } = request.body.item;
-
     db.query(
       `
         INSERT INTO user_bins (user_id, bin_id, score)
@@ -35,7 +33,30 @@ module.exports = (db, insertItem) => {
         response.status(204).json({});
         insertItem(request.body.item);
       })
-      .catch((error) => console.log(error));
+      .then(() => {
+        db.query(
+          `
+          SELECT user_id, bins.name, sum(user_bins.score)
+          FROM user_bins
+          JOIN users ON user_bins.user_id = users.id
+          JOIN bins ON bins.id = user_bins.bin_id
+          WHERE users.id = 3
+          GROUP BY user_id, bins.name;
+        `
+        )
+        .then(({ rows: user }) => {
+          let total = 0;
+          for (let bin of user) {
+            total += Number(bin.sum);
+          }
+          // if (total > 500) {
+          //   email()
+          // }
+          console.log("user", user);
+          console.log("total", total);
+        })
+      })
+      .catch(error => console.log(error));
   });
 
   return router;
