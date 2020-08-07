@@ -30,8 +30,8 @@ function read(file) {
 }
 
 module.exports = function application(
-  ENV
-  // actions = { updateAppointment: () => {} }
+  ENV,
+  actions = { insertItem: () => {} }
 ) {
   app.use(cors());
   app.use(helmet());
@@ -39,7 +39,7 @@ module.exports = function application(
 
   app.use("/api", users(db));
   app.use("/api", bins(db));
-  app.use("/api", user_bins(db));
+  app.use("/api", user_bins(db, actions.insertItem));
  
   if (ENV === "development" || ENV === "test") {
     Promise.all([
