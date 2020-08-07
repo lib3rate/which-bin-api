@@ -35,7 +35,7 @@ module.exports = (db, insertItem) => {
         response.status(204).json({});
         insertItem(request.body.item);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   });
 
   return router;

@@ -2,7 +2,7 @@ INSERT INTO users (username, email, password)
 VALUES
   ('Sylvia Palmer',   'Sylvia.Palmer@erich.biz',  '1234'),
   ('Tori Malcolm',    'tori@malcolm.com',         '1234'),
-  ('Mildred Nazir',   'mildred@nazir.com',        '1234'),
+  ('Mildred Nazir',   'julian.m.bustos@gmail.com','1234'),
   ('Cohana Roy',      'cohana@roy.com',           '1234'),
   ('Sven Jones',      'sven@jones.com',           '1234'),
   ('Susan Reynolds',  'susan@reynolds.com',       '1234'),
