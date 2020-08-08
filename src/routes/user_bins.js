@@ -1,34 +1,6 @@
 const sgMail = require("@sendgrid/mail");
 const router = require("express").Router();
 
-// const  sendEmail = () => {
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-// console.log("inside email sending");
-// const apiKey = process.env.SENDGRID_API_KEY;
-const msg = {
-  to: "julian.m.bustos@gmail.com",
-  from: "samarahjhodge@gmail.com", // Use the email address or domain you verified above
-  subject: "Score Update from [which-bin]",
-  text: `Your new score is 200 you have reached maximum treeness`,
-  html: `<strong>Your new score is 200 you have reached maximum treeness</strong>
-    <img src="https://cdn.dribbble.com/users/1616426/screenshots/4846715/the-forest.jpg" width="500" height="600">
-    `,
-};
-//ES6
-sgMail.send(msg).then(
-  () => {},
-  (error) => {
-    console.error(error);
-
-    if (error.response) {
-      console.error(error.response.body);
-    }
-  }
-);
-// }
-
 module.exports = (db, insertItem) => {
   router.get("/user_bins", (request, response) => {
     db.query(
@@ -78,10 +50,35 @@ module.exports = (db, insertItem) => {
             total += Number(bin.sum);
           }
 
-  
-          // if (total > 100) {
+          // ----------- commented out so it won't run everytime -------------------
+
+          // if (total > 175) {
+          //   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+          //   console.log("inside email sending");
+
+          //   const msg = {
+          //     to: "samarahjhodge@gmail.com",
+          //     from: "julian.m.bustos@gmail.com", // Use the email address or domain you verified above
+          //     subject: "Score Update from [which-bin]",
+          //     text: `Your new score is 200 you have reached maximum treeness`,
+          //     html: `<strong>Your new score is 200 you have reached maximum treeness</strong>
+          //   <img src="https://cdn.dribbble.com/users/1616426/screenshots/4846715/the-forest.jpg" width="500" height="600">
+          //   `,
+          //   };
+          //   //ES6
+          //   sgMail.send(msg).then(
+          //     () => {},
+          //     (error) => {
+          //       console.error(error);
+
+          //       if (error.response) {
+          //         console.error(error.response.body);
+          //       }
+          //     }
+          //   );
           // }
-          // console.log("user", user);
+
           console.log("total", total);
         });
       })

@@ -1,22 +1,22 @@
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
-const msg = {
-  to: 'samarahjhodge@gmail.com, julian.m.bustos@gmail.com',
-  from: 'samarahjhodge@gmail.com', // Use the email address or domain you verified above
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-};
-//ES6
-sgMail
-  .send(msg)
-  .then(() => {}, error => {
-    console.error(error);
+// const sgMail = require('@sendgrid/mail');
+// sgMail.setApiKey('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');
+// const msg = {
+//   to: 'samarahjhodge@gmail.com',
+//   from: 'julian.m.bustos@gmail.com', // Use the email address or domain you verified above
+//   subject: 'Sending with Twilio SendGrid is Fun',
+//   text: 'and easy to do anywhere, even with Node.js',
+//   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+// };
+// //ES6
+// sgMail
+//   .send(msg)
+//   .then(() => {}, error => {
+//     console.error(error);
 
-    if (error.response) {
-      console.error(error.response.body)
-    }
-  });
+//     if (error.response) {
+//       console.error(error.response.body)
+//     }
+//   });
 
 
 // const sgMail = require('@sendgrid/mail');
