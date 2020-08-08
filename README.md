@@ -1,10 +1,6 @@
 # Interview Scheduler API
 
-curl -i --request POST \
---url https://api.sendgrid.com/v3/mail/send \
---header 'Authorization: Bearer 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' \
---header 'Content-Type: application/json' \
---data '{"personalizations": [{"to": [{"email": "samarahjhodge@gmail.com"}]}],"from": {"email": "samarahjhodge@gmail.com"},"subject": "Hello, World!","content": [{"type": "text/plain", "value": "Howdy!"}]}'
+
 
 
 ## Setup
