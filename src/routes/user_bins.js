@@ -1,4 +1,33 @@
+const sgMail = require("@sendgrid/mail");
 const router = require("express").Router();
+
+// const  sendEmail = () => {
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// console.log("inside email sending");
+// const apiKey = process.env.SENDGRID_API_KEY;
+const msg = {
+  to: "julian.m.bustos@gmail.com",
+  from: "samarahjhodge@gmail.com", // Use the email address or domain you verified above
+  subject: "Score Update from [which-bin]",
+  text: `Your new score is 200 you have reached maximum treeness`,
+  html: `<strong>Your new score is 200 you have reached maximum treeness</strong>
+    <img src="https://cdn.dribbble.com/users/1616426/screenshots/4846715/the-forest.jpg" width="500" height="600">
+    `,
+};
+//ES6
+sgMail.send(msg).then(
+  () => {},
+  (error) => {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body);
+    }
+  }
+);
+// }
 
 module.exports = (db, insertItem) => {
   router.get("/user_bins", (request, response) => {
@@ -36,27 +65,27 @@ module.exports = (db, insertItem) => {
       .then(() => {
         db.query(
           `
-          SELECT user_id, bins.name, sum(user_bins.score)
+          SELECT user_id, users.email, bins.name, sum(user_bins.score)
           FROM user_bins
           JOIN users ON user_bins.user_id = users.id
           JOIN bins ON bins.id = user_bins.bin_id
           WHERE users.id = 3
-          GROUP BY user_id, bins.name;
+          GROUP BY user_id, bins.name, users.email;
         `
-        )
-        .then(({ rows: user }) => {
+        ).then(({ rows: user }) => {
           let total = 0;
           for (let bin of user) {
             total += Number(bin.sum);
           }
-          // if (total > 500) {
-          //   email()
+
+  
+          // if (total > 100) {
           // }
-          console.log("user", user);
+          // console.log("user", user);
           console.log("total", total);
-        })
+        });
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   });
 
   return router;
