@@ -52,7 +52,7 @@ module.exports = (db, insertItem) => {
 
           // ----------- commented out so it won't run everytime -------------------
 
-          // if (total > 175) {
+          // if (total > 1) {
           //   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
           //   console.log("inside email sending");
@@ -64,6 +64,7 @@ module.exports = (db, insertItem) => {
           //     text: `Your new score is 200 you have reached maximum treeness`,
           //     html: `<strong>Your new score is 200 you have reached maximum treeness</strong>
           //   <img src="https://cdn.dribbble.com/users/1616426/screenshots/4846715/the-forest.jpg" width="500" height="600">
+          //   <img src="/images/badge.png" width="500" height="600">
           //   `,
           //   };
           //   //ES6
