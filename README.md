@@ -1,4 +1,4 @@
-# Interview Scheduler API
+# ReForest API
 
 
 
@@ -21,6 +21,7 @@ PGUSER=development
 PGDATABASE=which_bin_app_development
 PGPASSWORD=development
 PGPORT=5432
+SENDGRID_API_KEY=
 ```
 
 ## Seeding
