@@ -1,15 +1,15 @@
 INSERT INTO users (username, email, password)
 VALUES
-  ('Jehanne Hodge',   'samarahjhodge@gmail.com',    '1234'),
-  ('Julian Bustos',   'julian.m.bustos@gmail.com',  '1234'),
-  ('Dmitry Petrov',   'dmitry.petrov0918@gmail.com','1234'),
-  ('Cohana Roy',      'cohana@roy.com',             '1234'),
-  ('Sven Jones',      'sven@jones.com',             '1234'),
-  ('Susan Reynolds',  'susan@reynolds.com',         '1234'),
-  ('Alec Quon',       'alec@quon.com',              '1234'),
-  ('Viktor Jain',     'victor@jain.com',            '1234'),
-  ('Lindsay Chu',     'lindsay.chu@email.biz',      '1234'),
-  ('Samantha Stanic', 'sam.stanic@erich.biz',       '1234');
+  ('Jehanne Hodge',     'samarahjhodge@gmail.com',      '1234'),
+  ('Julian Bustos',     'julian.m.bustos@gmail.com',    '1234'),
+  ('Dmitry Petrov',     'dmitry.petrov0918@gmail.com',  '1234'),
+  ('Francis Bourgouin', 'cohana@roy.com',               '1234'),
+  ('Dominic Tremblay',  'sven@jones.com',               '1234'),
+  ('Vasily Klimkin',    'susan@reynolds.com',           '1234'),
+  ('James Cash',        'alec@quon.com',                '1234'),
+  ('Lovemore Jokonya',  'victor@jain.com',              '1234'),
+  ('Janelle Stiehl',    'lindsay.chu@email.biz',        '1234'),
+  ('Emma McPhail',      'sam.stanic@erich.biz',         '1234');
 
 INSERT INTO bins (name)
 VALUES
