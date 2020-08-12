@@ -52,7 +52,7 @@ module.exports = (db, insertItem) => {
 
           // ----------- commented out so it won't run everytime -------------------
 
-          // if (total > 1) {
+          // if (total >= 60) {
           //   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
           //   console.log("inside email sending");
