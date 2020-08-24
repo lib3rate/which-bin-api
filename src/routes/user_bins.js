@@ -52,33 +52,27 @@ module.exports = (db, insertItem) => {
 
           // ----------- commented out so it won't run everytime -------------------
 
-          // if (total >= 60) {
-          //   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-          //   console.log("inside email sending");
-
-          //   const msg = {
-          //     to: "samarahjhodge@gmail.com",
-          //     from: "julian.m.bustos@gmail.com", // Use the email address or domain you verified above
-          //     subject: "Score Update from [which-bin]",
-          //     text: `Your new score is 200 you have reached maximum treeness`,
-          //     html: `<strong>Your new score is 200 you have reached maximum treeness</strong>
-          //   <img src="https://cdn.dribbble.com/users/1616426/screenshots/4846715/the-forest.jpg" width="500" height="600">
-          //   <img src="/images/badge.png" width="500" height="600">
-          //   `,
-          //   };
-          //   //ES6
-          //   sgMail.send(msg).then(
-          //     () => {},
-          //     (error) => {
-          //       console.error(error);
-
-          //       if (error.response) {
-          //         console.error(error.response.body);
-          //       }
-          //     }
-          //   );
-          // }
+          sgMail.setApiKey(
+            process.env.SENDGRID_API_KEY
+          );
+          const msg = {
+            to: "julian.m.bustos@gmail.com",
+            from: "shodg083@uottawa.ca", // Use the email address or domain you verified above
+            subject: "Score Update from ReForest",
+            text: "Your new score is 60 you have reached maximum treeness",
+            html:
+              '<strong>Your new score is 60 you have reached maximum treeness</strong> <p>You have received the "First Tree Badge"!</p> <a href="https://imgbb.com/"><img src="https://i.ibb.co/yPjpLRv/badge.png" alt="badge" border="0" /></a>',
+          };
+          //ES6
+          sgMail.send(msg).then(
+            () => {},
+            (error) => {
+              console.error(error);
+              if (error.response) {
+                console.error(error.response.body);
+              }
+            }
+          );
 
           console.log("total", total);
         });

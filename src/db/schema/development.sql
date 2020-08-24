@@ -1,8 +1,8 @@
 INSERT INTO users (username, email, password)
 VALUES
   ('Jehanne Hodge',     'samarahjhodge@gmail.com',      '1234'),
-  ('Julian Bustos',     'julian.m.bustos@gmail.com',    '1234'),
   ('Dmitry Petrov',     'dmitry.petrov0918@gmail.com',  '1234'),
+  ('Julian Bustos',     'julian.m.bustos@gmail.com',    '1234'),
   ('Francis Bourgouin', 'cohana@roy.com',               '1234'),
   ('Dominic Tremblay',  'sven@jones.com',               '1234'),
   ('Vasily Klimkin',    'susan@reynolds.com',           '1234'),
