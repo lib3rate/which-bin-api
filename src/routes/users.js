@@ -16,6 +16,34 @@ module.exports = (db) => {
     });
   });
 
+  router.put("/users", (request, response) => {
+    const { username, email, password } = request.body.item;
+
+    db.query(
+      `
+      INSERT INTO users (username, email, password)
+      VALUES ($1::string, $2::string, $3::integer);
+      `,
+      [username, email, password]
+    )
+      .then(() => {
+        response.status(204).json({});
+        insertItem(request.body.item);
+      })
+      .then(() => {
+        db.query(
+          `
+          SELECT users.username, user_bins.user_id, sum(user_bins.score) as score
+          FROM user_bins
+          JOIN users ON user_id = users.id
+          GROUP BY user_bins.user_id, users.username
+          ORDER BY score DESC;
+        `
+        ).then(({ rows: user_bins }) => {
+          response.json(user_bins);
+        });
+      });
+    })
   return router;
 };
 
